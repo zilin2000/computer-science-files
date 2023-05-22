@@ -1,3 +1,4 @@
+@[toc]
 # All computer science files
 [Github URL](https://github.com/Bruce-XUZILIN/computer-science-files)
 
