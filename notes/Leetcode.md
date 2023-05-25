@@ -3,7 +3,7 @@
 1. ##### Dynamic programming
 
    1. [最小的下落和(Java)](https://leetcode.cn/problems/minimum-falling-path-sum/)
-   2. [编辑距离 (Java)](# Leetcode 72 编辑距离)
+   2. [编辑距离 (Java)](#Leetcode 72 编辑距离)
    3. [最长递增子序列（C++）](https://leetcode.cn/problems/longest-increasing-subsequence/)
    4. [最大和的连续子数组（Java）](https://leetcode.cn/problems/maximum-subarray/)
    5. [最长公共子序列（Java/ Python）](https://leetcode.cn/problems/longest-common-subsequence/)
