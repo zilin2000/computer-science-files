@@ -1,30 +1,19 @@
 ##### 上岸进行时！
 
 1. ##### Dynamic programming
-
-   1. [最小的下落和(Java)](https://leetcode.cn/problems/minimum-falling-path-sum/)
-   2. [编辑距离 (Java)](#Leetcode 72 编辑距离)
-   3. [最长递增子序列（C++）](https://leetcode.cn/problems/longest-increasing-subsequence/)
-   4. [最大和的连续子数组（Java）](https://leetcode.cn/problems/maximum-subarray/)
-   5. [最长公共子序列（Java/ Python）](https://leetcode.cn/problems/longest-common-subsequence/)
-   6. [两个字符串的删除操作（Java/python）](https://leetcode.cn/problems/delete-operation-for-two-strings/)
-   7. [最小ASCII删除和（Java/python）](https://leetcode.cn/problems/minimum-ascii-delete-sum-for-two-strings/ )
-   8. [最长的回文子串（Java/python）](https://leetcode.cn/problems/longest-palindromic-subsequence/)
-   9. [背包问题（Java）](# 背包问题)
-   10. [分割等和子集（Java/python）](# Leetcode416分割等和子集)
-   11. [零钱兑换ll（Java/python）](# Leetcode 518 零钱兑换ll)
-   12. [目标和（Java）](# 优化：dp)
-   13. [最小路径和（Java/python）](https://leetcode.cn/problems/minimum-path-sum/)
-   14. [打家劫舍（Java/python）](https://leetcode.cn/problems/house-robber/)
-   15. [打家劫舍ll （python）](# Leetcode213 打家劫舍ll )
-   16. [打家劫舍lll （Java/python）](https://leetcode.cn/problems/house-robber-ii/ )
-   17. [区间加法](# 区间加法 )
-   18. [力扣55 跳跃游戏](https://leetcode.cn/problems/jump-game/)
-   19. [力扣337 打家劫舍III](https://leetcode.cn/problems/house-robber-iii/)
-   20. [力扣322 零钱兑换](https://leetcode.cn/problems/coin-change/)
-   21. [力扣62 不同路径](https://leetcode.cn/problems/unique-paths/)
-   22. [剑指47 礼物最大价值](https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof/)
-   23. 
+- [Leetcode 518 零钱兑换ll](#leetcode-518-零钱兑换ll)
+- [0Leetcode 493 目标和](#0leetcode-493-目标和)
+- [优化：dp](#优化dp)
+- [Leetcode 64 最小路径和](#leetcode-64-最小路径和)
+- [Leetcode198 打家劫舍](#leetcode198-打家劫舍)
+- [优化版：不需要dp数组](#优化版不需要dp数组)
+- [Leetcode213 打家劫舍ll](#leetcode213-打家劫舍ll)
+- [213. 打家劫舍 II](#213-打家劫舍-ii)
+- [Leetcode 337 打家劫舍lll](#leetcode-337-打家劫舍lll)
+- [力扣46 全排列](#力扣46-全排列)
+  - [两数相加](#两数相加)
+- [presum](#presum)
+- [区间加法](#区间加法)
 
    
 
