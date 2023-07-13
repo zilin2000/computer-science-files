@@ -16,6 +16,7 @@
       - [剑指 Offer 53 - I. 在排序数组中查找数字 I](#剑指-offer-53---i-在排序数组中查找数字-i)
       - [35. 搜索插入位置](#35-搜索插入位置)
       - [240. 搜索二维矩阵 II](#240-搜索二维矩阵-ii)
+      - [74. 搜索二维矩阵](#74-搜索二维矩阵)
 
 ## 第一章，基础数据结构
 
@@ -336,3 +337,53 @@ class Solution {
 
 >时间复杂度： 在最坏情况下，即当目标值位于矩阵的左下角时，算法的时间复杂度为O(m+n)，其中m为矩阵的行数，n为矩阵的列数。这是因为每次比较都会使得行索引i增加1或列索引j减少1，而最多进行m+n次比较即可找到目标值或确定其不存在。  
 空间复杂度： 该算法的空间复杂度为O(1)，因为除了使用常量级别的变量i、j和输入的matrix外，没有使用额外的空间。
+
+#### [74. 搜索二维矩阵](https://leetcode.cn/problems/search-a-2d-matrix/submissions/)
+
+![截屏2023-07-13 15.59.09.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e3a30641a8be418cb7216f0bec74c8fe~tplv-k3u1fbpfcp-watermark.image?)
+
+``` java
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        //把这个二维数组当作一位数组来看
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int left = 0, right = m * n - 1;
+        
+        //start loop
+        while(left <= right){
+            //这时候的mid意思是，matrix中第几个元素（从0开始数）
+            int mid = left + (right - left)/2;
+            
+            //找到当左右边界为left， right的时候,对应到matrix里面元素的位置
+            int i = mid / n;
+            int j = mid % n;
+
+            //start finding
+            if(matrix[i][j] == target){
+                return true;
+            }else if(matrix[i][j] < target){
+                left = mid + 1;
+            }else {
+                right = mid - 1;
+            }
+
+        }
+        
+
+        return false;
+    }
+}
+```
+
+> 时间复杂度分析：
+> 
+> -   获取矩阵的行数和列数的操作的时间复杂度为 O(1)，因为它们只需要访问矩阵的常量个元素。
+> -   在二分搜索过程中，每次循环将搜索范围减半，因此最多需要进行 O(log(m * n)) 次迭代。
+> -   在每次迭代中，计算中间索引以及获取对应的行索引和列索引的操作都只需要常量时间 O(1)。
+> -   综上所述，整个搜索过程的时间复杂度为 O(log(m * n))。
+> 
+> 空间复杂度分析：
+> 
+> -   空间复杂度取决于所使用的额外空间。在该算法中，除了输入的矩阵和几个整数变量之外，没有使用额外的空间。
+> -   因此，额外空间的使用为 O(1)，是常量级别的。
