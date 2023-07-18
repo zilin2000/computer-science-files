@@ -21,7 +21,10 @@
       - [658.找到 K 个最接近的元素](#658找到-k-个最接近的元素)
       - [852. 山脉数组的峰顶索引](#852-山脉数组的峰顶索引)
       - [剑指 Offer 53 - II. 0～n-1中缺失的数字](#剑指-offer-53---ii-0n-1中缺失的数字)
+    - [滑动窗口](#滑动窗口)
       - [3. 无重复字符的最长子串](#3无重复字符的最长子串)
+      - [438. 找到字符串中所有字母异位词](#438找到字符串中所有字母异位词)
+      - [567. 字符串的排列](#567字符串的排列)
 
 ## 第一章，基础数据结构
 
@@ -558,6 +561,7 @@ class Solution {
 在二分查找算法中，有一种常见的应用是搜索左侧边界的二分查找，我们可以借鉴这种思路来定位缺失的元素的位置。
 
 
+### [滑动窗口](https://labuladong.github.io/algo/di-ling-zh-bfe1b/wo-xie-le--f02cd/)
 
 #### [3. 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/)
 
@@ -614,3 +618,155 @@ class Solution {
 > 因此，该算法使用了线性的时间复杂度和额外的空间来存储 HashSet，以判断字符是否重复。
 
 
+#### [438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/description/)
+
+![截屏2023-07-18 17.28.46.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7d616ee4631d4de98cf737412dafd80a~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        int left = 0, right = 0;
+        int valid = 0;
+        List<Integer> res = new ArrayList<>();
+        //corner case 
+        if(p.length() > s.length()){
+            return res;
+        }
+
+        //one map for window, one for our need
+        Map<Character, Integer> need = new HashMap<>();
+        Map<Character, Integer> window = new HashMap<>();
+
+        for(char c: p.toCharArray()){
+            need.put(c, need.getOrDefault(c,0) + 1);
+        }
+        while(right < s.length()){
+            char rightChar = s.charAt(right);
+            window.put(rightChar, window.getOrDefault(rightChar, 0) + 1);
+            //update valid
+            if(need.containsKey(rightChar) && need.get(rightChar).equals(window.get(rightChar))){
+                valid ++;
+            }
+
+            //当窗口大小等于我们p的长度的时候，我们就要收缩窗口并检查是不是异位词
+            if(right - left + 1 == p.length()){
+                //check if we are going to update result
+                if(valid == need.size()){
+                    res.add(left);
+                }
+                char leftChar = s.charAt(left);
+                //update valid
+                if(need.containsKey(leftChar) && need.get(leftChar).equals(window.get(leftChar))){
+                    valid --;
+                }
+                window.put(leftChar, window.get(leftChar) - 1);
+                left ++;
+            }
+            right ++;
+        }
+        return res;
+    }
+}
+```
+**为什么要用equals，不能用==么**  
+在 Java 中，对于 `Integer` 类型的对象比较，不能直接使用 `==` 运算符，而是要使用 `equals()` 方法来进行比较。
+
+这是因为 `==` 运算符在比较引用类型时，比较的是对象的引用地址，而不是对象的内容。而 `equals()` 方法被重写，用于比较对象的内容。
+
+在上述代码中，`windowCount.get(rightChar)` 返回的是一个 `Integer` 对象，而 `pCount.get(rightChar)` 也返回一个 `Integer` 对象。我们需要比较这两个对象的内容是否相等，而不仅仅是比较它们的引用地址。
+
+因此，需要使用 `equals()` 方法来判断这两个 `Integer` 对象的内容是否相等。如果内容相等，表示当前字符在窗口中的出现次数与 `p` 中的出现次数相同，我们才将 `matched` 计数器加一。
+
+如果使用 `==` 运算符进行比较，将会比较两个 `Integer` 对象的引用地址，而不是它们的内容，这不符合我们的需求。
+
+所以，在这种情况下，我们应该使用 `equals()` 方法来进行比较，以确保比较的是对象的内容。
+
+希望这样的解释能够帮助你理解为什么要使用 `equals()` 方法而不是 `==` 运算符。如果还有其他问题，请随时提问。
+
+**我们什么时候要收缩window呢**  
+具体来说，当窗口的大小等于字符串 `p` 的长度时，我们需要检查当前窗口是否是一个字母异位词。如果是，我们将窗口的左指针添加到结果列表中。无论是否是字母异位词，我们都需要收缩窗口。
+
+> 在这个算法中，时间复杂度和空间复杂度如下：
+> 
+> 时间复杂度：
+> - 遍历字符串 `p` 并构建 `need` 哈希表的时间复杂度为 O(p)，其中 p 是字符串 `p` 的长度。
+> - 在滑动窗口的过程中，我们遍历字符串 `s` 一次，每个字符只遍历一次，因此时间复杂度为 O(s)，其中 s 是字符串 `s` 的长度。
+> - 综合起来，算法的总时间复杂度为 O(p + s)。
+> 
+> 空间复杂度：
+> - 需要额外的空间来存储 `need` 和 `window` 两个哈希表。在最坏的情况下，字符串 `p` 中的字符都是唯一的，因此需要存储 `p` 中的每个字符及其出现次数，所以 `need` 哈希表的空间复杂度为 O(p)。
+> - 窗口的大小最多为字符串 `p` 的长度，因此 `window` 哈希表的空间复杂度也为 O(p)。
+> - 综合起来，算法的总空间复杂度为 O(p)。
+> 
+> 综上所述，该算法的时间复杂度为 O(p + s)，空间复杂度为 O(p)。
+
+#### [567. 字符串的排列](https://leetcode.cn/problems/permutation-in-string/description/)
+
+![截屏2023-07-18 22.39.56.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdfb45c767aa41dc97483725538dac72~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public boolean checkInclusion(String s1, String s2) {
+        //滑动窗口
+        int left = 0, right = 0;
+        int valid = 0;
+        Map<Character, Integer> need = new HashMap<>();
+        Map<Character, Integer> window = new HashMap<>();
+
+        //corner case 
+        if(s1.length() > s2.length()){
+            return false;
+        }
+
+        //fill in the need
+        for(char c: s1.toCharArray()){
+            need.put(c, need.getOrDefault(c,0) + 1);
+        }
+
+        //sliding
+        while(right < s2.length()){
+            char rightChar = s2.charAt(right);
+            window.put(rightChar, window.getOrDefault(rightChar,0) + 1);
+            //update valid
+            if(need.containsKey(rightChar) && need.get(rightChar).equals(window.get(rightChar))){
+                valid ++;
+            }
+
+            //if the length of window is length of s1, check and shrink
+            if(right - left + 1 == s1.length()){
+                if(valid == need.size()){
+                    return true;
+                }
+                char leftChar = s2.charAt(left);
+                if(need.containsKey(leftChar) && need.get(leftChar).equals(window.get(leftChar))){
+                    valid --;//update valid
+                }
+                window.put(leftChar,window.get(leftChar) - 1);
+                left ++;
+            }
+
+            //move right
+            right ++;
+        }
+        return false;
+    }
+}
+```
+**注意**  
+再想到收缩窗口的同时，也要注意在if语句中检查是否valid然后决定return的值  
+
+> 在这个算法中，时间复杂度和空间复杂度如下：
+> 
+> 时间复杂度：
+> - 填充 `need` 哈希表的时间复杂度为 O(s1)，其中 s1 是字符串 `s1` 的长度。
+> - 在滑动窗口的过程中，我们遍历字符串 `s2` 一次，每个字符只遍历一次，因此时间复杂度为 O(s2)，其中 s2 是字符串 `s2` 的长度。
+> - 综合起来，算法的总时间复杂度为 O(s1 + s2)。
+> 
+> 空间复杂度：
+> - 需要额外的空间来存储 `need` 和 `window` 两个哈希表。在最坏的情况下，字符串 `s1` 中的字符都是唯一的，因此需要存储 `s1` 中的每个字符及其出现次数，所以 `need` 哈希表的空间复杂度为 O(s1)。
+> - 窗口的大小最多为字符串 `s1` 的长度，因此 `window` 哈希表的空间复杂度也为 O(s1)。
+> - 综合起来，算法的总空间复杂度为 O(s1)。
+> 
+> 综上所述，该算法的时间复杂度为 O(s1 + s2)，空间复杂度为 O(s1)。
+> 
+> 希望这个分析对你有所帮助。如果你还有其他问题，请随时提问。
