@@ -19,6 +19,9 @@
       - [74. 搜索二维矩阵](#74-搜索二维矩阵)
       - [392-判断子序列](#392-判断子序列)
       - [658.找到 K 个最接近的元素](#658找到-k-个最接近的元素)
+      - [852. 山脉数组的峰顶索引](#852-山脉数组的峰顶索引)
+      - [剑指 Offer 53 - II. 0～n-1中缺失的数字](#剑指-offer-53---ii-0n-1中缺失的数字)
+      - [3. 无重复字符的最长子串](#3无重复字符的最长子串)
 
 ## 第一章，基础数据结构
 
@@ -493,3 +496,121 @@ class Solution {
 > 1.  其他常数级别的额外空间的使用不会随输入规模的增加而增加，可以忽略不计。
 > 
 > 综上所述，算法的总空间复杂度为 O(k)。
+
+
+#### [852. 山脉数组的峰顶索引](https://leetcode.cn/problems/peak-index-in-a-mountain-array/submissions/)
+
+![截屏2023-07-18 13.34.28.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/655056f6783544f88e8b3911efa8992e~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        //binary search 
+        int left = 0, right = arr.length - 1;
+        while(left < right){
+            int mid = left + (right - left)/2;
+            if(arr[mid] > arr[mid + 1]){
+                //means we should find on left part
+                right = mid;
+            }else{
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+}
+```
+
+
+
+#### [剑指 Offer 53 - II. 0～n-1中缺失的数字](https://leetcode.cn/problems/que-shi-de-shu-zi-lcof/submissions/)
+
+
+![截屏2023-07-18 15.14.33.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b12fbd2091f34a54b48bd3c311b3744e~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public int missingNumber(int[] nums) {
+        //binary search 
+        int left = 0, right = nums.length - 1;
+        while(left <= right){
+            int mid = left + (right - left)/2;
+            if(nums[mid] > mid){
+                //means the missing number is on the left part
+                right = mid - 1;
+            }else{
+                //means right part
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+}
+```
+这道题考察二分查找算法。常规的二分搜索让你在 `nums` 中搜索目标值 `target`，但这道题没有给你一个显式的 `target`，怎么办呢？
+
+其实，二分搜索的关键在于，你是否能够找到一些规律，能够在搜索区间中一次排除掉一半。比如让你在 `nums` 中搜索 `target`，你可以通过判断 `nums[mid]` 和 `target` 的大小关系判断 `target` 在左边还是右边，一次排除半个数组。
+
+所以这道题的关键是，你是否能够找到一些规律，能够判断缺失的元素在哪一边？
+
+其实是有规律的，你可以观察 `nums[mid]` 和 `mid` 的关系，如果 `nums[mid]` 和 `mid` 相等，则缺失的元素在右半边，如果 `nums[mid]` 和 `mid` 不相等，则缺失的元素在左半边。
+
+在二分查找算法中，有一种常见的应用是搜索左侧边界的二分查找，我们可以借鉴这种思路来定位缺失的元素的位置。
+
+
+
+#### [3. 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/)
+
+![截屏2023-07-18 16.41.50.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5c324f1b511f449cb6a645e451f770f6~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        //Java solution
+        int n = s.length();
+        int left = 0, right = 0;
+        int result = 0;
+        HashSet<Character> set = new HashSet<>();
+        //start sliding
+        while(right < n){
+            //add the character into window if it is not already in window
+            char c = s.charAt(right);
+            char d = s.charAt(left);
+            if(!set.contains(c)){
+                set.add(c);
+                //update the result with the window size
+                result = Math.max(result,right - left + 1);
+                right ++;
+
+            }else{
+                //means set has c, shrink the window
+                set.remove(d);
+                left ++;
+            }
+
+        }
+        return result;
+
+    }
+}
+```
+具体流程如下：
+
+1.  初始化一个空的 HashSet，用于存储当前窗口中的字符。
+
+1.  每次右指针右移时，判断当前字符是否已经存在于 HashSet 中：
+
+    -   如果不存在，将当前字符加入 HashSet，并继续向右移动右指针。
+    -   如果存在，说明出现了重复字符，需要移动左指针来缩小窗口的大小，同时从 HashSet 中移除左指针对应的字符，继续右移右指针。
+
+1.  在每次移动右指针或左指针后，都可以通过计算右指针和左指针之间的距离来更新最长子串的长度。
+
+1.  重复上述步骤，直到右指针达到字符串的末尾。
+
+> 这个算法的时间复杂度是 O(n)，其中 n 是字符串的长度。在最坏的情况下，我们需要遍历整个字符串一次。
+> 
+> 空间复杂度是 O(min(n, m))，其中 n 是字符串的长度，m 是字符集的大小（在这个问题中为 256，即 ASCII 字符集的大小）。在 HashSet 中最多存储 m 个字符，即字符集的大小。
+> 
+> 因此，该算法使用了线性的时间复杂度和额外的空间来存储 HashSet，以判断字符是否重复。
+
+
