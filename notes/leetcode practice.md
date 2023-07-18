@@ -17,6 +17,8 @@
       - [35. 搜索插入位置](#35-搜索插入位置)
       - [240. 搜索二维矩阵 II](#240-搜索二维矩阵-ii)
       - [74. 搜索二维矩阵](#74-搜索二维矩阵)
+      - [392-判断子序列](#392-判断子序列)
+      - [658.找到 K 个最接近的元素](#658找到-k-个最接近的元素)
 
 ## 第一章，基础数据结构
 
@@ -387,3 +389,107 @@ class Solution {
 > 
 > -   空间复杂度取决于所使用的额外空间。在该算法中，除了输入的矩阵和几个整数变量之外，没有使用额外的空间。
 > -   因此，额外空间的使用为 O(1)，是常量级别的。
+
+#### [392-判断子序列](https://leetcode.cn/problems/is-subsequence/)
+
+![截屏2023-07-17 15.28.31.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0ae85b36c2a9458ba4809c7136d15f55~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        //双指针
+        int i = 0, j = 0;
+        while(i < s.length() && j < t.length()){
+            if(s.charAt(i) == t.charAt(j)){
+                i ++;
+            }
+            j ++;
+        }
+        return i == s.length();
+
+    }
+}
+```
+> 该解决方案使用了双指针方法来判断字符串s是否为字符串t的子序列。下面是对时间和空间复杂度的分析：
+> 
+> 时间复杂度分析：
+> 该算法的时间复杂度取决于字符串s和t的长度，分别为s.length()和t.length()。在最坏的情况下，指针i和j都需要遍历整个字符串s和t，因此时间复杂度为O(s.length() + t.length())。
+> 
+> 空间复杂度分析：
+> 该算法的空间复杂度是O(1)，因为它只使用了常数级别的额外空间。无论输入的字符串s和t有多长，算法所使用的额外空间都保持不变。
+> 
+> 综上所述，该算法的时间复杂度为O(s.length() + t.length())，空间复杂度为O(1)。
+
+#### [658.找到 K 个最接近的元素](https://leetcode.cn/problems/find-k-closest-elements/submissions/)
+
+![截屏2023-07-17 15.28.31.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2c6e6008269e49e996bdd3a08ffb52c6~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        //find left bound position of x
+        int p = left_bound(arr,x);
+        int left = p - 1, right = p;
+        //result linkdedlist 
+        LinkedList<Integer> res = new LinkedList<>();
+        while(right - left - 1 < k){
+            if(left == -1){
+                res.addLast(arr[right]);
+                right ++;
+            }else if(right == arr.length){
+                res.addFirst(arr[left]);
+                left --;
+            }else if(x - arr[left] > arr[right] - x){
+                res.addLast(arr[right]);
+                right ++;
+            }else{
+                res.addFirst(arr[left]);
+                left --;
+            }
+
+        }
+        return res;
+    }
+
+    //找到左侧边界
+    int left_bound(int[] arr, int target){
+        int left = 0, right = arr.length - 1;
+        while(left < right){
+            int mid = left + (right - left)/2;
+            if(arr[mid] == target){
+                right = mid;
+            }else if(arr[mid] < target){
+                //find on right part
+                left = mid + 1;
+            }else if(arr[mid] > target){
+                right = mid;
+            }
+            
+        }
+        return left;
+    }
+}
+```
+
+**为什么要用LinkedList？**  
+因为题目要求结果也是升序排列，所以我们要用到`addFirst`和`addLast`
+
+> 时间复杂度分析：
+> 
+> 1.  在 `left_bound` 方法中，使用二分查找找到左侧边界位置，时间复杂度为 O(log n)，其中 n 是数组 `arr` 的长度。
+> 
+> 1.  在 `findClosestElements` 方法中，循环执行的次数为 k，每次循环的操作都是常数时间复杂度，因此循环的时间复杂度为 O(k)。
+> 
+>     -   在每次循环中，执行插入操作 `res.addLast(arr[right])` 或 `res.addFirst(arr[left])`，插入操作的时间复杂度为 O(1)。
+>     -   执行 `right++` 和 `left--` 的操作也是常数时间复杂度。
+>     -   因此，整个 `while` 循环的时间复杂度为 O(k)。
+> 
+> 综上所述，算法的总时间复杂度为 O(log n + k)。
+> 
+> 空间复杂度分析：
+> 
+> 1.  空间复杂度主要取决于存储结果的链表 `res`，以及方法中使用的常数级别的额外空间。
+> 1.  结果链表 `res` 的空间复杂度为 O(k)，因为最多存储 k 个元素。
+> 1.  其他常数级别的额外空间的使用不会随输入规模的增加而增加，可以忽略不计。
+> 
+> 综上所述，算法的总空间复杂度为 O(k)。
