@@ -25,6 +25,14 @@
       - [3. 无重复字符的最长子串](#3无重复字符的最长子串)
       - [438. 找到字符串中所有字母异位词](#438找到字符串中所有字母异位词)
       - [567. 字符串的排列](#567字符串的排列)
+      - [76. 最小覆盖子串](#76最小覆盖子串)
+      - [239. 滑动窗口最大值](#239滑动窗口最大值)
+    - [其他题目](#其他题目)
+      - [26. 删除有序数组中的重复项](#26删除有序数组中的重复项)
+      - [27. 移除元素](#27移除元素)
+      - [283. 移动零](#283移动零)
+      - [83. 删除排序链表中的重复元素](#83删除排序链表中的重复元素)
+      - [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](#剑指-offer-21调整数组顺序使奇数位于偶数前面)
 
 ## 第一章，基础数据结构
 
@@ -770,3 +778,273 @@ class Solution {
 > 综上所述，该算法的时间复杂度为 O(s1 + s2)，空间复杂度为 O(s1)。
 > 
 > 希望这个分析对你有所帮助。如果你还有其他问题，请随时提问。
+
+#### [76. 最小覆盖子串](https://leetcode.cn/problems/minimum-window-substring/description/)
+
+![截屏2023-07-19 12.16.05.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a51b42ba7812425b92ee0394ffd63ece~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public String minWindow(String s, String t) {
+        int left = 0, right = 0;
+        //the start of the string
+        int start = 0;
+        int valid = 0;
+
+        //the length of the string
+        int len = Integer.MAX_VALUE;
+
+        Map<Character, Integer> need = new HashMap<>();
+        Map<Character, Integer> window = new HashMap<>();
+
+        for (char c : t.toCharArray()) {
+            need.put(c, need.getOrDefault(c, 0) + 1);
+        }
+
+        while (right < s.length()) {
+            char rightChar = s.charAt(right);
+            right++;
+            //if the char is what we need, we put it into the window
+            if (need.containsKey(rightChar)) {
+                window.put(rightChar, window.getOrDefault(rightChar, 0) + 1);
+                //update valid
+                if (need.get(rightChar).equals(window.get(rightChar))) {
+                    valid++;
+                }
+            }
+
+            //if we find the window is valid, we shrink the window
+            while (valid == need.size()) {
+                char leftChar = s.charAt(left);
+                //update len and start
+                if (right - left + 1 < len) {
+                    start = left;
+                    len = right - left + 1;
+                }
+
+                left++;
+
+                if (need.containsKey(leftChar)) {
+                    //update valid
+                    if (need.get(leftChar).equals(window.get(leftChar))) {
+                        valid--;
+                    }
+                    //move the element out of the window
+                    window.put(leftChar, window.get(leftChar) - 1);
+                }
+
+            }
+
+        }
+        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len - 1);
+    }
+}
+```
+**注意**  
+- Java中substring用法。
+- 这道题中window只要添加符合要求的char就行。
+
+> 上面提供的代码的时间复杂度为O(n)，其中n是输入字符串`s`的长度。这是因为代码使用两个指针（`left`和`right`）遍历字符串`s`，并执行依赖于`s`长度的操作。在最坏情况下，内部的`while`循环可能运行整个字符串`s`的长度，导致线性时间复杂度。
+> 
+> 代码的空间复杂度为O(m)，其中m是输入字符串`t`中不同字符的数量。这是因为代码使用两个哈希映射（`need`和`window`）来存储字符串`t`中字符的频率以及当前窗口`s`中的字符。哈希映射所需的空间取决于字符串`t`中不同字符的数量，即m。
+> 
+> 因此，代码的总体时间复杂度为O(n)，空间复杂度为O(m)。
+
+
+#### [239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum/description/)
+
+
+![截屏2023-07-19 15.51.34.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6a94d7843c9048dcb494284870d63b93~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        Monotonicqueue window = new Monotonicqueue();
+        List<Integer> res = new ArrayList<>();
+
+        for(int i = 0; i < nums.length; i ++){
+            if(i < k - 1){//add first k-2 elements
+                window.push(nums[i]);
+            }else{
+                window.push(nums[i]);
+                res.add(window.max());
+                //用得到这句话的情况有[最大的，比这个小的其他元素]，我们需要把最大的去掉
+                window.pop(nums[i - k + 1]);
+            }
+        }
+
+        int[] result = new int[res.size()];
+        for(int i = 0; i < result.length; i ++){
+            result[i] = res.get(i);
+        }
+
+        return result;
+    }
+}
+
+class Monotonicqueue{
+    LinkedList<Integer> maxq = new LinkedList<>();
+
+    //保证队列的头是最大的元素，并且先进先出
+    public void push(int n){
+        while(!maxq.isEmpty() && maxq.getLast() < n){
+            maxq.pollLast();//把小的元素都去掉，没用了
+        }
+        maxq.addLast(n);
+    }
+
+    public int max(){
+        return maxq.getFirst();
+    }
+
+    public void pop(int n){
+        //我们的window要么是有且只有一个最大的元素，要么就是[最大的，比这个小的其他元素]
+        if(maxq.getFirst() == n){
+            maxq.pollFirst();
+        }
+    }
+
+
+}
+```
+**为什么要用单调队列**  
+保证了队列始终维持递减的顺序，并且可以在 O(1) 的时间复杂度内获取当前队列的最大值。这样，在一系列元素的动态更新过程中，我们可以高效地跟踪最大值的变化。
+
+> -   时间复杂度：整个算法的时间复杂度是 O(n)，其中 n 是数组 `nums` 的长度。遍历一次数组需要 O(n) 的时间，每个元素最多进出队列一次，而队列的操作复杂度是 O(1)。所以总体时间复杂度是 O(n)。
+> -   空间复杂度：算法使用了一个 `res` 列表来存储结果，其最大长度是 n-k+1，所以空间复杂度是 O(n-k+1)。另外，`Monotonicqueue` 类内部使用了一个双向链表来存储元素，其长度最大不超过 k，所以空间复杂度是 O(k)。综合起来，算法的空间复杂度是 O(max(n-k+1, k))。
+> 
+> 因此，这段代码实现了一个时间复杂度为 O(n)，空间复杂度为 O(max(n-k+1, k)) 的滑动窗口最大值算法。
+
+### 其他题目
+
+#### [26. 删除有序数组中的重复项](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/)
+
+![截屏2023-07-19 16.18.26.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1be8b0eb077c4119b8dbc6d217721337~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        //双指针
+        if(nums.length == 0){
+            return 0;
+        }
+
+        int slow = 0, fast = 0;
+        while(fast < nums.length){
+            if(nums[slow] != nums[fast]){
+                nums[slow + 1] = nums[fast];
+                slow ++;
+            }
+            fast ++;
+        }
+        return slow + 1;
+        
+    }
+}
+```
+
+这道题的思路就是，双指针遍历：如果我遇到相同元素（包括最开始两个指针都在0号位的情况），我就只动fast；如果不同，就说明slow+1的元素应该是我fast元素。
+
+> 这段代码实现了一个时间复杂度为 O(n)，空间复杂度为 O(1) 的移除有序数组重复元素的算法。
+
+#### [27. 移除元素](https://leetcode.cn/problems/remove-element/description/)
+
+
+![截屏2023-07-19 16.30.04.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e09b7f9b36ea4d4a85754804a6cedf08~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        //双指针
+        int slow = 0, fast = 0;
+        while(fast < nums.length){
+            if(nums[fast] != val){
+                nums[slow] = nums[fast];
+                slow ++;
+            }
+            fast ++;
+        }
+        return slow;
+    }
+}
+```
+这道题的思路是， 如果`fast != val`,就说明这是我们要的值，把它给slow并且移动slow。如果`fast == val`，那么只要动fast。
+
+#### [283. 移动零](https://leetcode.cn/problems/move-zeroes/description/)
+
+![截屏2023-07-19 17.08.21.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/09d522b37d5048db8e0a069c808f957b~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int fast = 0, slow = 0;
+        while(fast < nums.length){
+            if(nums[fast] != 0){
+                nums[slow] = nums[fast];
+                slow ++;
+            }
+            fast ++;
+        }
+        while(slow < nums.length){
+            nums[slow] = 0;
+            slow ++;
+        }
+
+    }
+}
+```
+
+
+和上一道题一样，只不过后面多了一个加0的步骤
+
+#### [83. 删除排序链表中的重复元素](https://leetcode.cn/problems/remove-duplicates-from-sorted-list/description/)
+
+![截屏2023-07-19 17.22.08.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29796a9ab5ca486fa0ab8e8712f1ebbd~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode slow = head, fast = head;
+        while(fast != null){
+            if(slow.val != fast.val){
+                slow.next = fast;
+                slow = fast;
+            }
+            fast = fast.next;
+        }
+        slow.next = null;
+        return head;
+
+    }
+}
+```
+**注意**  
+`slow.next = null;` 这句话少不了
+
+> 这段代码实现了一个时间复杂度为 O(n)，空间复杂度为 O(1) 的删除链表中重复元素的算法。
+
+#### [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/description/)
+
+![截屏2023-07-19 22.54.53.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4ab6e2e310f0419099ce6e5d339273b3~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public int[] exchange(int[] nums) {
+        int slow = 0, fast = 0 ;
+        while(fast < nums.length){
+            if(nums[fast] % 2 == 1){
+                int temp = nums[fast];
+                nums[fast] = nums[slow];
+                nums[slow] = temp;
+                slow ++;
+            }
+            fast ++;
+        }
+        return nums;
+    }
+}
+```
+
+**解题思路**  
+如果遇到奇数就和slow调换位置
+
