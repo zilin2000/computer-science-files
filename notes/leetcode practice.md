@@ -33,6 +33,8 @@
       - [283. 移动零](#283移动零)
       - [83. 删除排序链表中的重复元素](#83删除排序链表中的重复元素)
       - [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](#剑指-offer-21调整数组顺序使奇数位于偶数前面)
+      - [剑指 Offer 57. 和为s的两个数字](#剑指-offer-57和为s的两个数字)
+      - [82. 删除排序链表中的重复元素 II](#82删除排序链表中的重复元素-ii)
 
 ## 第一章，基础数据结构
 
@@ -1048,3 +1050,80 @@ class Solution {
 **解题思路**  
 如果遇到奇数就和slow调换位置
 
+#### [剑指 Offer 57. 和为s的两个数字](https://leetcode.cn/problems/he-wei-sde-liang-ge-shu-zi-lcof/description/)
+
+
+![截屏2023-07-20 10.33.39.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dc7fb4d7456d4790a496d40ad1091696~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int left = 0 , right = nums.length - 1;
+        //左右指针
+        while(left < right){
+            //get the sum
+            int sum = nums[left] + nums[right];
+            if( sum == target){
+                return new int[]{nums[left],nums[right]};
+            }else if(sum < target){
+                left ++;
+            }else{
+                right --;
+            }
+        }
+        return null;
+    }
+}
+```
+> 时间复杂度： O(N)
+
+#### [82. 删除排序链表中的重复元素 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/description/)
+
+![截屏2023-07-20 11.05.45.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9385add0fbe8419ca15bf02fb0b8852c~tplv-k3u1fbpfcp-watermark.image?)
+
+```java
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode dummy = new ListNode(-1);
+        ListNode slow = dummy, fast = head;
+        while(fast != null){ 
+            if(fast.next != null && fast.next.val == fast.val){
+                while(fast.next != null && fast.next.val == fast.val){
+                    fast = fast.next;
+                }
+                fast = fast.next;
+                if(fast == null){
+                    slow.next = fast;
+                }
+            }else{
+                slow.next = fast;
+                fast = fast.next;
+                slow = slow.next;
+            }
+        }
+        return dummy.next;
+    }
+}
+```
+
+**注意**  
+- 这个题目是要把重复的元素去掉，也就是不留下来。所以当我们发现重复元素时，需要多加一个while，然后下一次走if的时候保证fast指针在重复元素的next；
+- 不排除一种情况是 1 2 2 2， 这样子的话需要在判断里面多加个if来让slow指向null
+
+给定的代码是用于删除链表中重复元素的问题。以下是对代码的复杂度分析：
+
+> 1.  时间复杂度：
+> 
+>     -   初始化 dummy 节点和两个指针 slow 和 fast：O(1)。
+>     -   while 循环：最坏情况下，需要遍历整个链表，即 O(n)，其中 n 是链表的长度。
+>     -   在 while 循环中，执行常数时间的操作：比较节点值，更新指针。
+>     -   内层 while 循环（用于跳过重复元素）的总体时间复杂度为 O(k)，其中 k 是重复元素的数量，但 k <= n。
+>     -   总体时间复杂度为 O(n)。
+> 
+> 1.  空间复杂度：
+> 
+>     -   创建了一个 dummy 节点：O(1)。
+>     -   使用了两个指针 slow 和 fast：O(1)。
+>     -   没有使用额外的数据结构，只使用了常数级的额外空间。
+> 
+> 综上所述，给定代码的时间复杂度为 O(n)，空间复杂度为 O(1)。
