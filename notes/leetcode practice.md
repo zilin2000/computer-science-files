@@ -35,6 +35,7 @@
       - [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](#剑指-offer-21调整数组顺序使奇数位于偶数前面)
       - [剑指 Offer 57. 和为s的两个数字](#剑指-offer-57和为s的两个数字)
       - [82. 删除排序链表中的重复元素 II](#82删除排序链表中的重复元素-ii)
+      - [986. 区间链表的交集](#986-区间链表的交集)
 
 ## 第一章，基础数据结构
 
@@ -1127,3 +1128,50 @@ class Solution {
 >     -   没有使用额外的数据结构，只使用了常数级的额外空间。
 > 
 > 综上所述，给定代码的时间复杂度为 O(n)，空间复杂度为 O(1)。
+
+#### [986. 区间链表的交集](https://leetcode.cn/problems/interval-list-intersections/)
+
+```java
+class Solution {
+    public int[][] intervalIntersection(int[][] firstList, int[][] secondList) {
+        //define result list
+        List<int[]> res = new ArrayList<>();
+
+        //define two pointers
+        int i = 0, j = 0;
+        while (i < firstList.length && j < secondList.length) {
+            int start_i = firstList[i][0], end_i = firstList[i][1];
+            int start_j = secondList[j][0], end_j = secondList[j][1];
+
+            if (end_i >= start_j && end_j >= start_i) {
+                res.add(new int[] {
+                    Math.max(start_i, start_j), Math.min(end_i, end_j)
+                });
+            }
+
+            //move the pointer
+            if(end_j > end_i){
+                i ++;
+            } else {
+                j ++;
+            }
+
+            
+        }
+        return res.toArray(new int[0][0]);
+    }
+}
+```
+把所有的情况都画出来就可以得到条件
+
+时间复杂度（TC）：O(M + N)
+
+- 其中，M表示第一个区间列表（firstList）的长度，N表示第二个区间列表（secondList）的长度。
+- 在算法中，我们使用两个指针（i和j）分别遍历两个区间列表，最坏情况下，我们可能需要遍历整个列表，因此时间复杂度是线性的，即O(M + N)。
+
+空间复杂度（SC）：O(1)
+
+- 空间复杂度通常用来描述算法的额外空间使用，不包括输入的空间。在这个算法中，除了结果列表（res）之外，我们没有使用额外的数据结构或分配额外的空间。
+- 结果列表（res）用于存储交集，但不会超过输入列表的长度，因此它的空间复杂度可以视为常数级别，即O(1)。
+
+总结：这个算法的时间复杂度是O(M + N)，其中M和N分别是两个输入列表的长度。空间复杂度是O(1)，因为除了结果列表外，没有使用其他额外的数据结构。
