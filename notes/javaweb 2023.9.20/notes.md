@@ -337,3 +337,42 @@ path:虚拟路径 （绝对路径， 相对路径 相对于webapps）
 www.test.com -> host找映射关系 -> server.xml找Engine的defaultHost -> 通过“/”(可以省略)映射到`/Users/xzl/Desktop/JspProject`
 
 这个只是学习一下，一般开发不会用，将上面复原！
+
+## 8.JSP执行流程 
+
+第一次访问：
+
+JSP -> Java -> class
+
+
+![截屏2023-09-24 19.59.23.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc230f595492455cab7fe38799a79f1f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2710&h=1104&s=655895&e=png&b=ffffff)
+
+
+.java 和 .class文件都放在
+
+`/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/work/Catalina/localhost/JspProject/org/apache/jsp`中
+
+第二次访问：直接访问.class文件
+
+**注意**
+
+如果服务端代码修改了，将会再访问时重新翻译，编译
+
+对比一下：
+
+
+![截屏2023-09-24 20.05.48.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8697db74eb6c49bfa0701db63ea0f019~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=3008&h=1692&s=931659&e=png&b=1b1b1b)
+
+.java文件严格来说是Servlet文件
+
+Jsp和Servlet可以相互转换
+
+因为第一次请求服务端会有翻译和编译的过程，因此比较慢；后续访问 可以直接访问class，因此速度较快。但是 如果服务端修改了代码，则再次访问时会重新的翻译和编译
+
+
+
+
+
+
+
+
