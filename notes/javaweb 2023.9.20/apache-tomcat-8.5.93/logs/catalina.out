@@ -1339,3 +1339,187 @@ NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED -
 24-Sep-2023 16:35:23.045 信息 [main] org.apache.coyote.AbstractProtocol.stop 正在停止ProtocolHandler ["http-nio-8888"]
 24-Sep-2023 16:35:33.050 警告 [main] org.apache.tomcat.util.net.Acceptor.stop 接收器线程[http-nio-8888-Acceptor]未能干净的停止
 24-Sep-2023 16:35:33.068 信息 [main] org.apache.coyote.AbstractProtocol.destroy 正在摧毁协议处理器 ["http-nio-8888"]
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+24-Sep-2023 20:10:28.707 警告 [main] org.apache.catalina.core.StandardContext.setPath 上下文路径必须是空字符串或以'/'开头，而不能以'/'结尾。路径[/]不符合这些条件，已更改为[]
+24-Sep-2023 20:10:28.771 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本: Apache Tomcat/8.5.93
+24-Sep-2023 20:10:28.772 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:        Aug 23 2023 22:43:14 UTC
+24-Sep-2023 20:10:28.772 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号:      8.5.93.0
+24-Sep-2023 20:10:28.772 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 操作系统名称:      Mac OS X
+24-Sep-2023 20:10:28.772 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:           13.5.2
+24-Sep-2023 20:10:28.772 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:              x86_64
+24-Sep-2023 20:10:28.772 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:     /Users/xzl/Library/Java/JavaVirtualMachines/openjdk-18.0.2.1/Contents/Home
+24-Sep-2023 20:10:28.772 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java虚拟机版本:    18.0.2.1+1-1
+24-Sep-2023 20:10:28.773 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:        Oracle Corporation
+24-Sep-2023 20:10:28.773 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     /Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93
+24-Sep-2023 20:10:28.773 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     /Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93
+24-Sep-2023 20:10:28.773 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.base/java.lang=ALL-UNNAMED
+24-Sep-2023 20:10:28.774 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.base/java.io=ALL-UNNAMED
+24-Sep-2023 20:10:28.774 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.base/java.util=ALL-UNNAMED
+24-Sep-2023 20:10:28.774 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+24-Sep-2023 20:10:28.774 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+24-Sep-2023 20:10:28.774 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.config.file=/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/conf/logging.properties
+24-Sep-2023 20:10:28.774 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-Sep-2023 20:10:28.775 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djdk.tls.ephemeralDHKeySize=2048
+24-Sep-2023 20:10:28.775 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+24-Sep-2023 20:10:28.775 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+24-Sep-2023 20:10:28.775 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dignore.endorsed.dirs=
+24-Sep-2023 20:10:28.775 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.base=/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93
+24-Sep-2023 20:10:28.775 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.home=/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93
+24-Sep-2023 20:10:28.775 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.io.tmpdir=/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/temp
+24-Sep-2023 20:10:28.776 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 在java.library.path:[/Users/xzl/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]上找不到基于APR的Apache Tomcat本机库，该库允许在生产环境中获得最佳性能
+24-Sep-2023 20:10:28.889 信息 [main] org.apache.coyote.AbstractProtocol.init 初始化协议处理器 ["http-nio-8888"]
+24-Sep-2023 20:10:28.964 信息 [main] org.apache.catalina.startup.Catalina.load Initialization processed in 999 ms
+24-Sep-2023 20:10:29.023 信息 [main] org.apache.catalina.core.StandardService.startInternal 正在启动服务[Catalina]
+24-Sep-2023 20:10:29.023 信息 [main] org.apache.catalina.core.StandardEngine.startInternal 正在启动 Servlet 引擎：[Apache Tomcat/8.5.93]
+24-Sep-2023 20:10:29.036 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor 正在部署部署描述符[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/conf/Catalina/localhost/JspProject.xml]。
+24-Sep-2023 20:10:29.416 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor 部署描述符[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/conf/Catalina/localhost/JspProject.xml]的部署已在[372]ms内完成
+24-Sep-2023 20:10:29.419 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/docs]
+24-Sep-2023 20:10:29.489 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/docs]的部署已在[70]毫秒内完成
+24-Sep-2023 20:10:29.490 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/manager]
+24-Sep-2023 20:10:29.572 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/manager]的部署已在[82]毫秒内完成
+24-Sep-2023 20:10:29.573 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/examples]
+24-Sep-2023 20:10:29.938 警告 [localhost-startStop-1] org.apache.tomcat.util.scan.StandardJarScanner.scan 无法从/WEB-INF/lib扫描JAR[file:/Users/xzl/Desktop/offer%20comes!!!/notes/javaweb%202023.9.20/apache-tomcat-8.5.93/webapps/examples/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar]。
+	java.nio.file.NoSuchFileException: /Users/xzl/Desktop/offer comes!!
+		at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+		at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+		at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+		at java.base/sun.nio.fs.UnixFileAttributeViews$Basic.readAttributes(UnixFileAttributeViews.java:55)
+		at java.base/sun.nio.fs.UnixFileSystemProvider.readAttributes(UnixFileSystemProvider.java:148)
+		at java.base/java.nio.file.Files.readAttributes(Files.java:1851)
+		at java.base/java.util.zip.ZipFile$Source.get(ZipFile.java:1269)
+		at java.base/java.util.zip.ZipFile$CleanableResource.<init>(ZipFile.java:709)
+		at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:243)
+		at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:172)
+		at java.base/java.util.jar.JarFile.<init>(JarFile.java:347)
+		at java.base/sun.net.www.protocol.jar.URLJarFile.<init>(URLJarFile.java:103)
+		at java.base/sun.net.www.protocol.jar.URLJarFile.getJarFile(URLJarFile.java:72)
+		at java.base/sun.net.www.protocol.jar.JarFileFactory.get(JarFileFactory.java:168)
+		at java.base/sun.net.www.protocol.jar.JarFileFactory.getOrCreate(JarFileFactory.java:91)
+		at java.base/sun.net.www.protocol.jar.JarURLConnection.connect(JarURLConnection.java:132)
+		at java.base/sun.net.www.protocol.jar.JarURLConnection.getInputStream(JarURLConnection.java:175)
+		at java.base/java.net.URL.openStream(URL.java:1161)
+		at org.apache.tomcat.util.descriptor.tld.TldResourcePath.openStream(TldResourcePath.java:127)
+		at org.apache.tomcat.util.descriptor.tld.TldParser.parse(TldParser.java:62)
+		at org.apache.jasper.servlet.TldScanner.parseTld(TldScanner.java:275)
+		at org.apache.jasper.servlet.TldScanner$TldScannerCallback.scan(TldScanner.java:315)
+		at org.apache.tomcat.util.scan.StandardJarScanner.process(StandardJarScanner.java:391)
+		at org.apache.tomcat.util.scan.StandardJarScanner.scan(StandardJarScanner.java:197)
+		at org.apache.jasper.servlet.TldScanner.scanJars(TldScanner.java:262)
+		at org.apache.jasper.servlet.TldScanner.scan(TldScanner.java:104)
+		at org.apache.jasper.servlet.JasperInitializer.onStartup(JasperInitializer.java:101)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4889)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:710)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:687)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:661)
+		at org.apache.catalina.startup.HostConfig.deployDirectory(HostConfig.java:1177)
+		at org.apache.catalina.startup.HostConfig$DeployDirectory.run(HostConfig.java:1925)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:833)
+24-Sep-2023 20:10:29.961 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/examples]的部署已在[388]毫秒内完成
+24-Sep-2023 20:10:29.962 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/ROOT]
+24-Sep-2023 20:10:30.007 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/ROOT]的部署已在[44]毫秒内完成
+24-Sep-2023 20:10:30.008 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/host-manager]
+24-Sep-2023 20:10:30.047 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/host-manager]的部署已在[38]毫秒内完成
+24-Sep-2023 20:10:30.107 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8888"]
+24-Sep-2023 20:10:30.120 信息 [main] org.apache.catalina.startup.Catalina.start Server startup in 1152 ms
+24-Sep-2023 20:10:46.325 信息 [main] org.apache.catalina.core.StandardServer.await 通过关闭端口接收到有效的关闭命令。正在停止服务器实例。
+24-Sep-2023 20:10:46.326 信息 [main] org.apache.coyote.AbstractProtocol.pause 暂停ProtocolHandler["http-nio-8888"]
+24-Sep-2023 20:10:46.331 信息 [main] org.apache.catalina.core.StandardService.stopInternal 正在停止服务[Catalina]
+24-Sep-2023 20:10:46.390 信息 [main] org.apache.coyote.AbstractProtocol.stop 正在停止ProtocolHandler ["http-nio-8888"]
+24-Sep-2023 20:10:46.404 信息 [main] org.apache.coyote.AbstractProtocol.destroy 正在摧毁协议处理器 ["http-nio-8888"]
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+06-Oct-2023 14:38:39.975 警告 [main] org.apache.catalina.core.StandardContext.setPath 上下文路径必须是空字符串或以'/'开头，而不能以'/'结尾。路径[/]不符合这些条件，已更改为[]
+06-Oct-2023 14:38:40.026 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本: Apache Tomcat/8.5.93
+06-Oct-2023 14:38:40.027 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:        Aug 23 2023 22:43:14 UTC
+06-Oct-2023 14:38:40.027 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号:      8.5.93.0
+06-Oct-2023 14:38:40.027 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 操作系统名称:      Mac OS X
+06-Oct-2023 14:38:40.027 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:           14.0
+06-Oct-2023 14:38:40.027 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:              x86_64
+06-Oct-2023 14:38:40.027 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:     /Users/xzl/Library/Java/JavaVirtualMachines/openjdk-18.0.2.1/Contents/Home
+06-Oct-2023 14:38:40.028 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java虚拟机版本:    18.0.2.1+1-1
+06-Oct-2023 14:38:40.028 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:        Oracle Corporation
+06-Oct-2023 14:38:40.028 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     /Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93
+06-Oct-2023 14:38:40.028 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     /Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93
+06-Oct-2023 14:38:40.029 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.base/java.lang=ALL-UNNAMED
+06-Oct-2023 14:38:40.029 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.base/java.io=ALL-UNNAMED
+06-Oct-2023 14:38:40.029 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.base/java.util=ALL-UNNAMED
+06-Oct-2023 14:38:40.029 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+06-Oct-2023 14:38:40.029 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+06-Oct-2023 14:38:40.029 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.config.file=/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/conf/logging.properties
+06-Oct-2023 14:38:40.029 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+06-Oct-2023 14:38:40.030 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djdk.tls.ephemeralDHKeySize=2048
+06-Oct-2023 14:38:40.030 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+06-Oct-2023 14:38:40.030 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+06-Oct-2023 14:38:40.030 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dignore.endorsed.dirs=
+06-Oct-2023 14:38:40.030 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.base=/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93
+06-Oct-2023 14:38:40.030 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Dcatalina.home=/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93
+06-Oct-2023 14:38:40.031 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 命令行参数：       -Djava.io.tmpdir=/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/temp
+06-Oct-2023 14:38:40.031 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent 在java.library.path:[/Users/xzl/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]上找不到基于APR的Apache Tomcat本机库，该库允许在生产环境中获得最佳性能
+06-Oct-2023 14:38:40.132 信息 [main] org.apache.coyote.AbstractProtocol.init 初始化协议处理器 ["http-nio-8888"]
+06-Oct-2023 14:38:40.202 信息 [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1029 ms
+06-Oct-2023 14:38:40.264 信息 [main] org.apache.catalina.core.StandardService.startInternal 正在启动服务[Catalina]
+06-Oct-2023 14:38:40.265 信息 [main] org.apache.catalina.core.StandardEngine.startInternal 正在启动 Servlet 引擎：[Apache Tomcat/8.5.93]
+06-Oct-2023 14:38:40.276 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor 正在部署部署描述符[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/conf/Catalina/localhost/JspProject.xml]。
+06-Oct-2023 14:38:40.687 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor 部署描述符[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/conf/Catalina/localhost/JspProject.xml]的部署已在[403]ms内完成
+06-Oct-2023 14:38:40.690 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/docs]
+06-Oct-2023 14:38:40.755 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/docs]的部署已在[64]毫秒内完成
+06-Oct-2023 14:38:40.756 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/manager]
+06-Oct-2023 14:38:40.839 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/manager]的部署已在[82]毫秒内完成
+06-Oct-2023 14:38:40.840 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/examples]
+06-Oct-2023 14:38:41.218 警告 [localhost-startStop-1] org.apache.tomcat.util.scan.StandardJarScanner.scan 无法从/WEB-INF/lib扫描JAR[file:/Users/xzl/Desktop/offer%20comes!!!/notes/javaweb%202023.9.20/apache-tomcat-8.5.93/webapps/examples/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar]。
+	java.nio.file.NoSuchFileException: /Users/xzl/Desktop/offer comes!!
+		at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+		at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+		at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+		at java.base/sun.nio.fs.UnixFileAttributeViews$Basic.readAttributes(UnixFileAttributeViews.java:55)
+		at java.base/sun.nio.fs.UnixFileSystemProvider.readAttributes(UnixFileSystemProvider.java:148)
+		at java.base/java.nio.file.Files.readAttributes(Files.java:1851)
+		at java.base/java.util.zip.ZipFile$Source.get(ZipFile.java:1269)
+		at java.base/java.util.zip.ZipFile$CleanableResource.<init>(ZipFile.java:709)
+		at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:243)
+		at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:172)
+		at java.base/java.util.jar.JarFile.<init>(JarFile.java:347)
+		at java.base/sun.net.www.protocol.jar.URLJarFile.<init>(URLJarFile.java:103)
+		at java.base/sun.net.www.protocol.jar.URLJarFile.getJarFile(URLJarFile.java:72)
+		at java.base/sun.net.www.protocol.jar.JarFileFactory.get(JarFileFactory.java:168)
+		at java.base/sun.net.www.protocol.jar.JarFileFactory.getOrCreate(JarFileFactory.java:91)
+		at java.base/sun.net.www.protocol.jar.JarURLConnection.connect(JarURLConnection.java:132)
+		at java.base/sun.net.www.protocol.jar.JarURLConnection.getInputStream(JarURLConnection.java:175)
+		at java.base/java.net.URL.openStream(URL.java:1161)
+		at org.apache.tomcat.util.descriptor.tld.TldResourcePath.openStream(TldResourcePath.java:127)
+		at org.apache.tomcat.util.descriptor.tld.TldParser.parse(TldParser.java:62)
+		at org.apache.jasper.servlet.TldScanner.parseTld(TldScanner.java:275)
+		at org.apache.jasper.servlet.TldScanner$TldScannerCallback.scan(TldScanner.java:315)
+		at org.apache.tomcat.util.scan.StandardJarScanner.process(StandardJarScanner.java:391)
+		at org.apache.tomcat.util.scan.StandardJarScanner.scan(StandardJarScanner.java:197)
+		at org.apache.jasper.servlet.TldScanner.scanJars(TldScanner.java:262)
+		at org.apache.jasper.servlet.TldScanner.scan(TldScanner.java:104)
+		at org.apache.jasper.servlet.JasperInitializer.onStartup(JasperInitializer.java:101)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4889)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:710)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:687)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:661)
+		at org.apache.catalina.startup.HostConfig.deployDirectory(HostConfig.java:1177)
+		at org.apache.catalina.startup.HostConfig$DeployDirectory.run(HostConfig.java:1925)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:833)
+06-Oct-2023 14:38:41.237 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/examples]的部署已在[396]毫秒内完成
+06-Oct-2023 14:38:41.237 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/ROOT]
+06-Oct-2023 14:38:41.265 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/ROOT]的部署已在[28]毫秒内完成
+06-Oct-2023 14:38:41.266 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/host-manager]
+06-Oct-2023 14:38:41.294 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Web应用程序目录[/Users/xzl/Desktop/offer comes!!!/notes/javaweb 2023.9.20/apache-tomcat-8.5.93/webapps/host-manager]的部署已在[28]毫秒内完成
+06-Oct-2023 14:38:41.342 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8888"]
+06-Oct-2023 14:38:41.355 信息 [main] org.apache.catalina.startup.Catalina.start Server startup in 1148 ms
+06-Oct-2023 14:53:03.614 信息 [main] org.apache.catalina.core.StandardServer.await 通过关闭端口接收到有效的关闭命令。正在停止服务器实例。
+06-Oct-2023 14:53:03.621 信息 [main] org.apache.coyote.AbstractProtocol.pause 暂停ProtocolHandler["http-nio-8888"]
+06-Oct-2023 14:53:03.637 信息 [main] org.apache.catalina.core.StandardService.stopInternal 正在停止服务[Catalina]
+06-Oct-2023 14:53:03.721 信息 [main] org.apache.coyote.AbstractProtocol.stop 正在停止ProtocolHandler ["http-nio-8888"]
+06-Oct-2023 14:53:03.729 信息 [main] org.apache.coyote.AbstractProtocol.destroy 正在摧毁协议处理器 ["http-nio-8888"]
