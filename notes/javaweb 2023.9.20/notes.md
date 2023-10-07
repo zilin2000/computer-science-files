@@ -3,6 +3,8 @@
 > date : 2023.9.20  
 > link: 【JavaWeb视频教程（JSP/Servlet/上传/下载/分页/MVC/三层架构/Ajax）】https://www.bilibili.com/video/BV18s411u7EH?vd_source=c13765adc65e1127b9523161e34f9a99
 
+
+# 第一阶段：入门
 ## 0. 
 JSP: 动态网页
 
@@ -369,10 +371,92 @@ Jsp和Servlet可以相互转换
 
 因为第一次请求服务端会有翻译和编译的过程，因此比较慢；后续访问 可以直接访问class，因此速度较快。但是 如果服务端修改了代码，则再次访问时会重新的翻译和编译
 
+# 第二阶段： 使用Eclipse开发  
+## 1.使用Eclipse 开发Web项目 （JSP）
+
+- 用Eclipse配置tomcat
+    - 打开preference，找到server，选runtime environment
+- 在Sever（面板）里配置tomcat
+    - 点window，把server面板show出来
+    - 在面板里添加tomcat
+
+### 在eclipse里创建project
+- 点击file，newproject， other， 搜web，选择Dynamic Web Project
+- 在出来的页面里，规定名字，选择tomcat刚才配置的版本，那个version3.1就是 servlet版本，后面会讲
+
+![截屏2023-10-06 15.46.29.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/49603e3c11814618a9156f9a30e648b8~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1184&h=1548&s=629798&e=png&b=535759)
+
+- 然后点next，在最后把`web.xml`钩上
+
+**补充一个eclipse小知识**
+
+如果你的界面混乱了，点 window -> Perspective -> Reset Perspective
 
 
+![截屏2023-10-06 15.55.52.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db7e4098ee5841b088c55d589b208da8~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=612&h=682&s=213732&e=png&b=303030)
+在webapp目录下分别创建两个.jsp文件
+
+**注意**
+
+第一次创建的时候选new -> other然后搜jsp
+
+添加两行代码
+
+![截屏2023-10-06 15.57.06.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cc61b4e13a3149b8b3096c39387560c0~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1984&h=1024&s=507663&e=png&b=313131)
+
+**怎么启动呢**
+
+在server面板里右击，add and remove，把刚才创建的project加进去就行
+
+![截屏2023-10-06 15.58.24.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/484d51b188724670836fe402283e219d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1134&h=966&s=388690&e=png&b=2e2d2d)
+
+![截屏2023-10-06 15.58.37.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d65146f6538348ce8e87dfafa1d5cf77~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1186&h=1072&s=400568&e=png&b=54585a)
+
+在右击，start就行。输入网址`http://localhost:8888/MyJspProject/index1.jsp`
 
 
+![截屏2023-10-06 16.00.31.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9b42261ace594c1b83390c468ff76e34~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1350&h=626&s=54867&e=png&b=ffffff)
+
+**为什么输入http://localhost:8888/MyJspProject/ 找不到呢404**
+
+因为我们没有在web.xml配置
+
+在web.xml中改成index1.jsp，然后在下面面板中restart就行。
+
+![截屏2023-10-06 16.03.38.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aacbb93d7d6749dda14ed03ef2fca791~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1212&h=1072&s=435243&e=png&b=272727)
 
 
+![截屏2023-10-06 16.04.22.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c48f962cf4d4afdbd3b510b8d49bcdb~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=888&h=600&s=39824&e=png&b=ffffff)
 
+值得一提的是
+
+> **<http://localhost:8888/MyJspProject/>**
+> 这个地址是个相对路径，eclipse帮我们配置好了，意思就是访问目录/webapp下的项目
+
+那我们试一下/WEB-INF/index2.jsp
+
+![截屏2023-10-06 16.07.57.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9e54bce8b9042d0ae83e99d01977ee5~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=622&s=83946&e=png&b=ffffff)
+
+因为出于安全考虑，WEB-INF这个文件夹权限比较高，客户端（浏览器）不能直接访问。只能通过请求转发访问。
+
+**注意**
+
+并不是任何内部跳转都能访问WEB-INF，原因是， 跳转有两种方式
+- 请求转发
+- 重定向（访问不了）
+
+### 统一字符集编码
+0. 编码分类
+    1. 设置jsp文件的编码： jsp -> java， 配置方法：jsp文件中的pageEncoding属性 
+    2. 设置浏览器读取jsp文件的编码 配置方法： jsp文件中的content属性
+
+    一般将上述设置成一样的，推荐使用国际编码，UTF-8
+
+    ![截屏2023-10-06 16.22.48.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bcb034758c447349eeddcd50aecce9d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1650&h=888&s=352646&e=png&b=303030)
+    
+    3. 文本编码： jsp文件本身的编码  
+        1. 将整个eclipse中的文件统一设置： preference -> Jsp files -> encoding
+        2. 设置某一个项目
+        3. 设置单独文件： 右键 properties
+
+        
