@@ -459,4 +459,162 @@ Jsp和Servlet可以相互转换
         2. 设置某一个项目
         3. 设置单独文件： 右键 properties
 
+
+### 来看个小问题
+
+我们如果在我们安装tomca的文件夹（offer comes/ notes/ javaweb）里面的server.xml里面改了端口号的话，我们发现对我们eclipse里面的项目没有任何影响。这是因为，我们在eclipse中配置tomcat的时候，会自动拷贝一份独立出来。
+
+![截屏2023-10-08 01.44.28.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1265f1e25b6c42f38e24e23eb2b5a93e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1384&h=1196&s=616886&e=png&b=303030)
+
+要选择上面的`Use Tomcate installation`意思是托管模式
+
+**注意，只能在第一次部署tomcat的时候修改这个选项（双击）**
+
+## JSP页面元素
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Insert title here</title>
+
+</head>
+
+<body>
+
+hello index1 你好
+
+<%
+String name = "Bruce";
+out.println("hello JSP" + name);
+
+%>
+
+</body>
+
+</html>
+```
+
+#### 0. 脚本Scriptlet（line 21 - line 25）
+1. <% 局部变量、Java语句 %>
+2. <%!  定义全局变量，方法  %>
+3. <%= 输出表达式%>（和二基本一样，这个不用分号）           <%= "hello" + name %>
+
+一般而言修改web.xml、配置文件、java   需要重启tomcat服务器
+
+如果修改jsp/html/css/js，不需要重启
+
+**注意**
+
+在jsp里面，println不会回车，如果需要的话要这样
+
+`out.println("hello JSP" + name + "<br/>");`
+
+#### 1. 指令（第一第二行）
+
+page指令（用得最多，还有两种另外的指令）
+
+`<%@ page ....%>`
+
+指定的属性：
+
+1. language：jsp页面使用的脚本语言（Java）
+2. import：导入类
+3. pageEncoding：jsp文件自身编码 jsp->java
+4. contentType： 浏览器解析jsp的编码（一般和上面保持一致）
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+pageEncoding="UTF-8" import="java.util.Date"%>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Insert title here</title>
+
+</head>
+
+<body>
+
+hello index1 你好
+
+<%!
+
+public String name;
+
+public Date date = new Date();
+
+public void init(){
+
+name = "Bruce";
+
+  
+
+
+}
+
+%>
+
+<%
+
+init();
+
+out.println("hello JSP");
+
+out.println(name + date);
+
+%>
+
+</body>
+
+</html>
+```
+
+#### 2. 注释
+
+html comment: `<!-- -->`（可以被客户通过浏览器查看源代码所观察到，其他两个不行）
+
+java comment: `//   /* */`
+
+jsp comment: `<%-- --%>`
+
+## JSP九大内置对象（自带的，不需要new 也能使用的对象）
+- out： 输出对象，向客户端输出
+- request：请求对象，存储客户端向服务端的请求信息
+![截屏2023-10-08 12.24.27.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eda3022740f64de0b8bf4d35c4931a03~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2088&h=966&s=816728&e=png&b=fffefe)
+
+### request对象常见方法
+```java
+String getParamater(String name) : 根据请求的字段名key，返回字段值value
+String[] getParamaterValues(String name) : 根据请求的字段名key，返回多个字段值value（数组，比如checkbox多选按钮）
+setCharacterEncoding("编码格式utf-8")：设置请求编码 (tomcat7以前默认iso-8859-1,tomcat8以后改成了utf-8)
+getRequestDispatcher(“B.jsp”).forward(request,response); ： 请求转发 页面A -> B
+ServletContext getServerContext（）：获取项目的ServletContext对象
+```
+
+- pageContext
+- response
+- session
+- application
+- config
+- page
+- exception
+- 
+
+
         
