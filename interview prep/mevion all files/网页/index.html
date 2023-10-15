@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>模仿汽车之家全景观察demo</title>
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color:aliceblue;
+    }
+    .image-container {
+      width: 800px;
+      height: 600px;
+      overflow: hidden;
+      position: relative;
+      /* cursor: grab; */
+    }
+      
+    .image-container:active {
+      cursor: grabbing;
+    }
+   
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+   
+    .image-container img.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <!-- 循环加载图像 -->
+    <!-- 注意：请将HTML文件与image文件夹放在同一目录下，并确保image文件夹中包含1.png到25.png的图像文件 -->
+    <!-- 这里假设图像文件名都是按顺序命名的：1.png, 2.png, ..., 25.png -->
+    <!-- 如果文件名不是按顺序命名，您可能需要使用其他方法来获取和加载图像 -->
+    <script>
+      for (let i = 1; i <= 25; i++) {
+        const img = document.createElement('img');
+        img.src = `image/${i}.png`;
+        img.alt = `Image ${i}`;
+        if (i === 1) {
+          img.classList.add('visible');
+        }
+        document.querySelector('.image-container').appendChild(img);
+      }
+    </script>
+  </div>
+
+  <script>
+    const imageContainer = document.querySelector('.image-container');
+    let isMouseDown = false;
+    let startX;
+    let currentImageIndex = 0;
+    const images = imageContainer.querySelectorAll('img');
+   
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('mousemove', handleMouseMove);
+   
+    function handleMouseDown(event) {
+      isMouseDown = true;
+      startX = event.pageX;
+    }
+   
+    function handleMouseLeave() {
+      isMouseDown = false;
+    }
+   
+    function handleMouseUp(event) {
+      isMouseDown = false;
+    }
+   
+    function handleMouseMove(event) {
+      if (!isMouseDown) return;
+     
+      const endX = event.pageX;
+      const diffX = endX - startX;
+      // 调整鼠标灵敏度
+      if (diffX > 100) {
+        showNextImage();
+      } else if (diffX < -100) {
+        showPreviousImage();
+      }
+    }
+   
+    function showNextImage() {
+      images[currentImageIndex].classList.remove('visible');
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      images[currentImageIndex].classList.add('visible');
+    }
+   
+    function showPreviousImage() {
+      images[currentImageIndex].classList.remove('visible');
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      images[currentImageIndex].classList.add('visible');
+    }
+
+    window.addEventListener('dragstart', function(event) {
+      event.preventDefault();
+    });
+
+    window.addEventListener('selectstart', function(event) {
+      event.preventDefault();
+    });
+  </script>
+</body>
+</html>
+
