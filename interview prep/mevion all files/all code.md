@@ -1068,6 +1068,7 @@ def deleteItemOfLayout(layout):
                 deleteItemOfLayout(item.layout())
 ```
 
+# 主文件
 ```python
 
 import sys
@@ -1082,6 +1083,8 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+# 打包文件
 
 ```python
 
@@ -1872,6 +1875,7 @@ def deleteItemOfLayout(layout):
                 ### new 
 
 ```
+
 ## new interactor style
 ``` python
 # 导入系统模块
@@ -2182,6 +2186,8 @@ class MyInteractorStyle(vtk.vtkInteractorStyleTrackballCamera):
 
 ```
 
+
+# socket
 ```python
 # import package for server part
 import threading
