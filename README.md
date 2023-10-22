@@ -3,9 +3,17 @@
 [Github URL](https://github.com/Bruce-XUZILIN/computer-science-files)
 
 ## note
-- Git.md: all knowledges about Git
-- Leetcode.md: leetcode practice log
-- Python.md: python learning from Java programmer
+- Contains all the tech notes I wrote
 
 ## resume
 
+- My resume written by LaTex
+
+## interview prep
+
+- Prep for interview questions
+
+
+## files
+
+- Useful files for CS studying
