@@ -1,4 +1,6 @@
-@[TOC]
+---
+title: "Git Notes"
+---
 
 
 **为什么要学习git**
